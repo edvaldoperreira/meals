@@ -5,8 +5,8 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('This is my favorite list of foods!'),
+    return const Center(
+      child: Text('This is list of favorite food!'),
     );
   }
 }

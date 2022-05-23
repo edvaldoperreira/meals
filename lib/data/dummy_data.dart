@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/category.dart';
-import '../models/meal.dart';
+import '../models/dish.dart';
 
 const dummyCategories = [
   Category(
@@ -56,8 +56,8 @@ const dummyCategories = [
   ),
 ];
 
-const dummyMeals = [
-  Meal(
+const dummyDishes = [
+  Dish(
     id: 'm1',
     categories: ['c1', 'c2'],
     title: 'Spaghetti with Tomato Sauce',
@@ -88,7 +88,7 @@ const dummyMeals = [
     isVegetarian: true,
     isLactoseFree: true,
   ),
-  Meal(
+  Dish(
     id: 'm2',
     categories: ['c2'],
     title: 'Toast Hawaii',
@@ -114,7 +114,7 @@ const dummyMeals = [
     isVegetarian: false,
     isLactoseFree: false,
   ),
-  Meal(
+  Dish(
     id: 'm3',
     categories: ['c2', 'c3'],
     title: 'Classic Hamburger',
@@ -143,7 +143,7 @@ const dummyMeals = [
     isVegetarian: false,
     isLactoseFree: true,
   ),
-  Meal(
+  Dish(
     id: 'm4',
     categories: ['c4'],
     title: 'Wiener Schnitzel',
@@ -176,7 +176,7 @@ const dummyMeals = [
     isVegetarian: false,
     isLactoseFree: false,
   ),
-  Meal(
+  Dish(
     id: 'm5',
     categories: ['c2', 'c5', 'c10'],
     title: 'Salad with Smoked Salmon',
@@ -208,7 +208,7 @@ const dummyMeals = [
     isVegetarian: true,
     isLactoseFree: true,
   ),
-  Meal(
+  Dish(
     id: 'm6',
     categories: ['c6', 'c10'],
     title: 'Delicious Orange Mousse',
@@ -241,7 +241,7 @@ const dummyMeals = [
     isVegetarian: true,
     isLactoseFree: false,
   ),
-  Meal(
+  Dish(
     id: 'm7',
     categories: ['c7'],
     title: 'Pancakes',
@@ -270,7 +270,7 @@ const dummyMeals = [
     isVegetarian: true,
     isLactoseFree: false,
   ),
-  Meal(
+  Dish(
     id: 'm8',
     categories: ['c8'],
     title: 'Creamy Indian Chicken Curry',
@@ -301,7 +301,7 @@ const dummyMeals = [
     isVegetarian: false,
     isLactoseFree: true,
   ),
-  Meal(
+  Dish(
     id: 'm9',
     categories: ['c9'],
     title: 'Chocolate Souffle',
@@ -348,7 +348,7 @@ const dummyMeals = [
     isVegetarian: true,
     isLactoseFree: false,
   ),
-  Meal(
+  Dish(
     id: 'm10',
     categories: ['c2', 'c5', 'c10'],
     title: 'Asparagus Salad with Cherry Tomatoes',

@@ -15,7 +15,7 @@ class CategoryItem extends StatelessWidget {
     // ));
     Navigator.of(context).pushNamed(
       //'/categories-meals',
-      Routes.categoriesMeals,
+      Routes.categoriesDishes,
       arguments: category,
     );
   }

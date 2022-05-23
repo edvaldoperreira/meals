@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals/pages/categories_meals_page.dart';
-import 'package:meals/pages/categories_page.dart';
-import 'package:meals/pages/meal_detail_page.dart';
-
+import 'package:meals/pages/tabs_page.dart';
+import 'pages/categories_dishes_page.dart';
+import 'pages/categories_page.dart';
+import 'pages/dish_detail_page.dart';
 import 'utils/routes.dart';
 
 void main() => runApp(MyApp());
@@ -36,9 +36,9 @@ class MyApp extends StatelessWidget {
       //home: const CategoriesPage(),
       //initialRoute: '/',
       routes: {
-        Routes.home: (context) => const CategoriesPage(),
-        Routes.categoriesMeals: (context) => const CategoriesMealsPage(),
-        Routes.mealDetail: (context) => const MealDetailPage()
+        Routes.home: (context) => const TabsPage(),
+        Routes.categoriesDishes: (context) => const CategoriesDishesPage(),
+        Routes.dishDetail: (context) => const DishDetailPage()
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) {
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DeliMeals'),
+        title: const Text('DeliDishes'),
       ),
       body: const Center(
         child: Text('Navegar é preciso!!'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/components/main_drawer.dart';
 import 'package:meals/pages/categories_page.dart';
 import 'package:meals/pages/favorites_page.dart';
 
@@ -30,6 +31,7 @@ class _TabsPageState extends State<TabsPage> {
         title:
             Center(child: Text(_pages[_selectedTabIndex]['title'] as String)),
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectedTabIndex]['Page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,

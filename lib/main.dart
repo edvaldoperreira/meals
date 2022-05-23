@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/pages/settings_page.dart';
 import 'package:meals/pages/tabs_page.dart';
 import 'pages/categories_dishes_page.dart';
 import 'pages/categories_page.dart';
@@ -36,9 +37,10 @@ class MyApp extends StatelessWidget {
       //home: const CategoriesPage(),
       //initialRoute: '/',
       routes: {
-        Routes.home: (context) => const TabsPage(),
-        Routes.categoriesDishes: (context) => const CategoriesDishesPage(),
-        Routes.dishDetail: (context) => const DishDetailPage()
+        AppRoutes.home: (context) => const TabsPage(),
+        AppRoutes.categoriesDishes: (context) => const CategoriesDishesPage(),
+        AppRoutes.dishDetail: (context) => const DishDetailPage(),
+        AppRoutes.settings: (context) => const SettingsPage()
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) {

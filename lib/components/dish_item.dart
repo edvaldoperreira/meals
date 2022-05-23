@@ -7,7 +7,7 @@ class DishItem extends StatelessWidget {
   const DishItem(this.dish, {Key? key}) : super(key: key);
 
   void _selectdish(BuildContext context) {
-    Navigator.of(context).pushNamed(Routes.dishDetail, arguments: dish);
+    Navigator.of(context).pushNamed(AppRoutes.dishDetail, arguments: dish);
   }
 
   @override

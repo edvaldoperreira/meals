@@ -12,7 +12,7 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return favoriteDishes.isEmpty
         ? const Center(
-            child: Text("There is not favorite yet!"),
+            child: Text("There is no favorite yet!"),
           )
         : ListView.builder(
             itemCount: favoriteDishes.length,

@@ -1,15 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:meals/pages/settings_page.dart';
-import 'package:meals/pages/tabs_page.dart';
+import 'package:meals/data/dummy_data.dart';
+import 'package:meals/models/settings.dart';
+import 'models/dish.dart';
 import 'pages/categories_dishes_page.dart';
 import 'pages/categories_page.dart';
 import 'pages/dish_detail_page.dart';
+import 'pages/settings_page.dart';
+import 'pages/tabs_page.dart';
 import 'utils/routes.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Dish> _availableDishes = dummyDishes;
+  List<Dish> _favoriteDishes = [];
+  Settings settings = Settings();
+
+  void fillAvailableDishes(Settings settings) {
+    setState(() {
+      this.settings = settings;
+      _availableDishes = dummyDishes.where((dish) {
+        final gluten = settings.isGlutenFree && !dish.isGlutenFree;
+        final lactose = settings.isLactoseFree && !dish.isLactoseFree;
+        final vegan = settings.isVegan && !dish.isVegan;
+        final vegetarian = settings.isVegetarian && !dish.isVegetarian;
+        return !gluten && !lactose && !vegan && !vegetarian;
+      }).toList();
+    });
+  }
+
+  void toggleFavorite(Dish dish) {
+    setState(() {
+      _favoriteDishes.contains(dish)
+          ? _favoriteDishes.remove(dish)
+          : _favoriteDishes.add(dish);
+    });
+  }
+
+  bool isFavorite(Dish dish) {
+    return _favoriteDishes.contains(dish);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +74,13 @@ class MyApp extends StatelessWidget {
       //home: const CategoriesPage(),
       //initialRoute: '/',
       routes: {
-        AppRoutes.home: (context) => const TabsPage(),
-        AppRoutes.categoriesDishes: (context) => const CategoriesDishesPage(),
-        AppRoutes.dishDetail: (context) => const DishDetailPage(),
-        AppRoutes.settings: (context) => const SettingsPage()
+        AppRoutes.home: (context) => TabsPage(_favoriteDishes),
+        AppRoutes.categoriesDishes: (context) =>
+            CategoriesDishesPage(_availableDishes),
+        AppRoutes.dishDetail: (context) =>
+            DishDetailPage(toggleFavorite, isFavorite),
+        AppRoutes.settings: (context) =>
+            SettingsPage(fillAvailableDishes, settings)
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) {

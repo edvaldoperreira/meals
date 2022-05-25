@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:meals/models/category.dart';
+import 'package:meals/models/dish.dart';
 
 import '../components/dish_item.dart';
-import '../data/dummy_data.dart';
+import '../models/category.dart';
 
 class CategoriesDishesPage extends StatelessWidget {
-  const CategoriesDishesPage({Key? key}) : super(key: key);
+  List<Dish> dishes;
+  CategoriesDishesPage(this.dishes, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final category = ModalRoute.of(context)!.settings.arguments as Category;
-    final categoryDishes = dummyDishes.where((meal) {
+    final categoryDishes = dishes.where((meal) {
       return meal.categories.contains(category.id);
     }).toList();
 

@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../models/dish.dart';
 
 class DishDetailPage extends StatelessWidget {
-  const DishDetailPage({Key? key}) : super(key: key);
+  final Function onFavoriteChanged;
+  final bool Function(Dish) isFavorite;
+
+  const DishDetailPage(this.onFavoriteChanged, this.isFavorite, {Key? key})
+      : super(key: key);
 
   Widget _getSectionTitle(BuildContext context, String title) {
     return Container(
@@ -85,9 +89,11 @@ class DishDetailPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.favorite),
+        child: Icon(
+          isFavorite(dish) ? Icons.favorite : Icons.favorite_border,
+        ),
         onPressed: () {
-          Navigator.of(context).pop(dish.title);
+          onFavoriteChanged(dish);
         },
       ),
     );
